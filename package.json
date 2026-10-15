@@ -1,0 +1,11 @@
+{
+  "name": "mandarin-sentence-audio",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "grade": "node scripts/grade-corpora.mjs"
+  },
+  "dependencies": {
+    "opencc-js": "1.4.2"
+  }
+}
