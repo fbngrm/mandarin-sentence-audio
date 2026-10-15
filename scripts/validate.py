@@ -8,6 +8,7 @@ root = Path(__file__).resolve().parents[1]
 manifest = json.loads((root / 'manifest.json').read_text())
 seen = {'aishell3': set(), 'tatoeba': set()}
 audio = {}
+recordings = {}
 for name, info in manifest['files'].items():
     content = (root / name).read_bytes()
     assert hashlib.sha256(content).hexdigest() == info['sha256'], name
@@ -23,6 +24,7 @@ for name, info in manifest['files'].items():
             assert grade['level'] == expected, row['id']
             assert 0 <= grade['coverage'] <= 1
         if row['source'] == 'aishell3':
+            recordings[row['id']] = row
             assert row['pinyin']
             assert row['audio'] == f"audio/aishell3/{row['speaker']}/{row['id']}.mp3"
             data = (root / row['audio']).read_bytes()
@@ -36,3 +38,14 @@ assert {p.stem for p in (root / 'audio/aishell3').glob('*/*.mp3')} == seen['aish
 assert set(json.loads((root / 'audio/aishell3/index.json').read_text())['clips']) == seen['aishell3']
 (root / 'audio/checksums.json').write_text(json.dumps(audio, separators=(',', ':')) + '\n')
 print(json.dumps({'records': manifest['counts'], 'audioBytes': sum(x['bytes'] for x in audio.values()), 'validated': True}))
+
+word_path = root / manifest['wordAudio']['path']
+assert hashlib.sha256(word_path.read_bytes()).hexdigest() == manifest['wordAudio']['sha256']
+index = json.loads(word_path.read_text())
+assert len(index['words']) == manifest['wordAudio']['words']
+for word, rows in index['words'].items():
+    for row in rows:
+        source = recordings[row['id']]
+        assert source['text'] == word and source['pinyin'] == row['pinyin']
+        assert source['audio'] == row['audio'] and row['readings']
+print('Word recording transcripts, pronunciations and index checksum validated.')

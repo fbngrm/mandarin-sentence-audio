@@ -9,10 +9,10 @@ AISHELL-3 is Apache-2.0; Tatoeba text is CC BY 2.0 FR. No Tatoeba audio is inclu
 
 ## Fetch a recording and its metadata
 
-Use the pinned `v1.0.0` release for consistent data:
+Use the pinned `v1.1.0` release for consistent data:
 
 ```js
-const base = 'https://raw.githubusercontent.com/fbngrm/mandarin-sentence-audio/v1.0.0/';
+const base = 'https://raw.githubusercontent.com/fbngrm/mandarin-sentence-audio/v1.1.0/';
 const id = 'SSB00050001';
 const records = await (await fetch(`${base}data/aishell3/${id.slice(0, 7)}.json`)).json();
 const sentence = records.find((row) => row.id === id);
@@ -42,8 +42,9 @@ ICU versions; the generating runtime is recorded in `manifest.json`.
 
 This is a vocabulary estimate. It does not assess grammar, idioms, reading
 comprehension, speech rate, accent, or listening difficulty. Names and compounds
-may remain unlisted. The MIT source has 10,057 spellings with 2025 labels and is
-incomplete; missing entries must not be treated as officially outside HSK.
+may remain unlisted. The 2025 mapping covers all 11,000 syllabus entries (10,896 spellings).
+Different readings and senses use their lowest introduction level; this is not
+word-sense disambiguation.
 The separate `hsk3` field in the vocabulary data preserves the **2021** standard.
 It is not silently relabeled as the 2025 syllabus.
 
@@ -56,9 +57,22 @@ corpus from OpenSLR and the detailed Mandarin TSV export from Tatoeba.
 npm install
 python3 scripts/prepare-audio.py /path/to/aishell3
 node scripts/grade-corpora.mjs /path/to/aishell3 /path/to/cmn_sentences_detailed.tsv
+node scripts/index-word-audio.mjs /path/to/zh-dictionary
 python3 scripts/validate.py
 ```
 
 The audio conversion can reuse existing matching MP3s with `--reuse <directory>`.
 Original source files are never modified. JSON and MP3s can be self-hosted using
 the same relative paths. The dictionary library exports URL helpers for this corpus.
+
+## Isolated word recordings
+
+`data/word-audio.json` indexes 782 complete recordings for 583 dictionary words.
+Each transcript equals the complete word; syllables and tones must match a known
+dictionary reading. `readings` lists the supported dictionary pinyin strings.
+There is no cutting of sentence audio or synthetic word audio. Recordings with
+unmatched pronunciations remain available in the full corpus, but are not selected
+for dictionary word playback. The manifest records the index checksum.
+
+Grading code is shared with the website through
+[zh-grader](https://github.com/fbngrm/zh-grader), pinned in package-lock.json.

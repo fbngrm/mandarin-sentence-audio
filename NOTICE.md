@@ -32,14 +32,18 @@ Export last modified: 2026-10-10. Downloaded: 2026-10-15.
 No Tatoeba recordings are distributed. Their audio licenses are separate.
 Text is an unfiltered corpus export, not a reviewed set of learning examples.
 
-## HSK mappings — MIT
+## HSK mappings and syllabus sources
 
 Yanis Zafirópulos, complete-hsk-vocabulary:
 https://github.com/drkameleon/complete-hsk-vocabulary
 
 Pinned commit and version details: `data/hsk/meta.json`.
 Copyright and license: `licenses/HSK-MIT.txt`.
-The 2025 mapping is incomplete. Missing words are not automatically beyond HSK.
+The complete 2025 mapping comes from the November 2025 syllabus by the Center
+for Language Education and Cooperation / Chinese Testing International, transcribed
+by hsk-tutor.com: https://github.com/uranbekanarbaev/hsk-3.0-vocabulary-dataset
+Original syllabus rights are retained; see `licenses/HSK-2025-source-rights.md`.
+The MIT license above applies to the older mappings, not the 2025 syllabus content.
 
 ## Generated grades and code
 

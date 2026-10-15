@@ -6,6 +6,7 @@
     "grade": "node scripts/grade-corpora.mjs"
   },
   "dependencies": {
+    "@fbngrm/zh-grader": "git+https://github.com/fbngrm/zh-grader.git#v0.1.0",
     "opencc-js": "1.4.2"
   }
 }
