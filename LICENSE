@@ -1,21 +1,28 @@
-MIT License
+Copyright (c) 2026 Fabian Grimme. All rights reserved.
 
-Copyright (c) 2026 fbngrm
+This repository and its contents (source code, data, text, audio recordings and
+other media) are proprietary. No part of them may be copied, reproduced, modified,
+distributed, published or otherwise used, in whole or in part, without prior written
+permission from the copyright holder.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+Making this repository publicly viewable, including through GitHub Pages, does not
+grant any license. Beyond what GitHub's Terms of Service allow (viewing and forking
+on GitHub), no rights are granted.
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+Releases up to and including v1.1.0 were published under the MIT License; copies
+obtained under those releases keep it. This notice applies from the next release on.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+For permission requests, see the contact details at
+https://fbngrm.github.io/privacy/privacy.html.
+
+Third-party material
+--------------------
+
+Third-party material in this repository is not covered by this notice; it keeps its
+own license, and its rights stay with its owners.
+
+It includes:
+
+- AISHELL-3 recordings and transcripts, Tatoeba sentence text and HSK vocabulary data, under the licenses listed in `NOTICE.md` and `licenses/`
+
+Any other third-party material keeps its own license as stated in its source.
